@@ -19,6 +19,7 @@ void fail(char* pat) {
     }
 }
 
+
 int pmatch(char* str, char* pat) {
     int i = 0, j = 0;
     int lens = strlen(str);
