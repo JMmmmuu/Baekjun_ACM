@@ -24,13 +24,12 @@ int main() {
 
     while ((item = fgetc(stdin)) != '\n')
         curPos = pushInitItem(curPos, item);
-    curPos = pushInitItem(curPos, '\n');
+    curPos = pushInitItem(curPos, '\n');            // curPos point the last node of the list
 
     scanf("%d", &n);
     for (i = 0; i < n; i++) {
-        //fgetc(stdin);
         scanf(" %c", &cmd);
-        switch (cmd/* = fgetc(stdin)*/) {
+        switch (cmd) {
             case 'L' :
                 curPos = moveLeft(curPos); break;
             case 'D':
@@ -80,9 +79,9 @@ nptr delete(nptr curPos) {
         nptr ptmp = pFree->Llink;
         ptmp->Rlink = curPos;
         curPos->Llink = ptmp;
-        //curPos = pFree->Llink;
     }
     else {
+        // node to be freed is the HEAD Node!
         curPos->Llink = NULL;
         HEAD = curPos;
     }
@@ -91,11 +90,11 @@ nptr delete(nptr curPos) {
 }
 
 nptr pushCurPos(nptr curPos, char item) {
+    if (!curPos) return NULL;
+
     nptr ptmp;
     nptr pNew = (nptr)malloc(sizeof(NODE));
     pNew->item = item;
-
-    if (!curPos) return NULL;
 
     if (!curPos->Llink) {
         // push at the first
