@@ -20,9 +20,8 @@ int main() {
     for (i = 0; i < n; i++)
         push(i+1);
 
-    nptr pMove;
-    for (pMove = HEAD; pMove->link; pMove = pMove->link) ;
-    nptr pCur = pMove;
+    nptr pCur;
+    for (pCur = HEAD; pCur->link; pCur = pCur->link) ;
     printf("<");
     for (i = 0; i < n-1; i++)
         pCur = pop(pCur, m, n);
